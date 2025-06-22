@@ -1,0 +1,14 @@
+[build]
+  command = "npx tsc && node dist/index.js"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+
+[dev]
+  command = "npx tsc && node dist/index.js"
+  port = 3000
+
+[build.environment]
+  NODE_VERSION = "20.0.0"
+  TZ = "Asia/Tokyo"

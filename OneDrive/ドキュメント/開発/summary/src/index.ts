@@ -22,7 +22,7 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 
 // 本文抽出ユーティリティ
-async function extractMainText(url: string): Promise<string> {
+export async function extractMainText(url: string): Promise<string> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch URL: ${res.status}`);
   const html = await res.text();
@@ -34,7 +34,7 @@ async function extractMainText(url: string): Promise<string> {
 }
 
 // Gemini で日本語1行要約
-async function summarizeWithGemini(text: string): Promise<string> {
+export async function summarizeWithGemini(text: string): Promise<string> {
   // 最新SDKの仕様に合わせて修正
   const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-latest' });
   const prompt = `次の文章を日本語で120文字以内で1行に要約してください。\n\n${text}`;
